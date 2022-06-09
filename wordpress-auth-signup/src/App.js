@@ -7,13 +7,18 @@ import Home from './components/Home'
 export class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div className='App'>
-            <Route exact path='/' component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={SignUp} />
-        </div>
-      </BrowserRouter>
+
+      <div>
+        <SignUp />
+      </div>
+
+      // <BrowserRouter>
+      //   <div className='App'>
+      //       <Route exact path='/' component={Home} />
+      //       <Route path='/login' component={Login} />
+      //       <Route path='/signup' component={SignUp} />
+      //   </div>
+      // </BrowserRouter>
     )
   }
 }
