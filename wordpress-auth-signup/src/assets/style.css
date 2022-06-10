@@ -37,10 +37,25 @@
     height: 100vh;
     width: 100%;
     z-index: 0;
-    padding-top: 10%;
+    padding-top: 5%;
     padding-bottom: 10%;
 }
 
 .btn.btn-primary {
     margin-top: 10px;
+}
+
+.labelForm {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4d4d4d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control{
+    
+    border: 0.5px solid #4d4d4d;
+    padding: 5px;
+    color: #4d4d4d;
 }

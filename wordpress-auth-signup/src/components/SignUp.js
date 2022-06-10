@@ -82,22 +82,22 @@ class SignUp extends Component {
         <form onSubmit={this.handleSubmit}>
 
           <div className="form-group">
-            <label htmlFor="exampleInputUsername">Username</label>
+            <label className='labelForm' htmlFor="exampleInputUsername">Username</label>
             <input name="username" value={this.state.username} onChange={this.handleChange} type="text" className="form-control" id="exampleInputUsername" aria-describedby="emailHelp" placeholder="Enter Username" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="exampleInputEmail">Email address</label>
+            <label className='labelForm' htmlFor="exampleInputEmail">Email address</label>
             <input name="email" value={this.state.email} onChange={this.handleChange} type="email" className="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email" />
           </div>
 
           <div className="form-group">
-            <label htmlFor="exampleInputPassword">Password</label>
+            <label className='labelForm' htmlFor="exampleInputPassword">Password</label>
             <input name="password" value={this.state.password} onChange={this.handleChange} type="password" className="form-control" id="exampleInputPassword" placeholder="Enter Password" />
           </div>
 
           <div className='form-group'>
-            <label htmlFor="exampleInputRoles">Select Roles</label>
+            <label className='labelForm' htmlFor="exampleInputRoles">Select Roles</label>
             <select className="form-control" onChange={(e) => { this.setState({ roles: e.target.value }) }} placeholder="Select Role" id="exampleInputRoles">
               <option>Select Roles</option>
               <option>administrator</option>
@@ -120,11 +120,11 @@ class SignUp extends Component {
           </div> */}
 
           <div className="form-group">
-            <label htmlFor="exampleInputCountry">Country</label>
+            <label className='labelForm' htmlFor="exampleInputCountry">Country</label>
             <input name="country" value={this.state.country} onChange={this.handleChange} type="text" className="form-control" id="exampleInputCountry" placeholder="Enter Country" />
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Register</button>
 
         </form>
         </div>

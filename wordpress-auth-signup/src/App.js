@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Home from './components/Home'
-import Login1 from './components/Login1'
-import SignUp1 from './components/SignUp1';
 import  './assets/style.css';
 
 export class App extends Component {
