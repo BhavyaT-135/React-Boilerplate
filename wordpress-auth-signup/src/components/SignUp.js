@@ -51,17 +51,21 @@ class SignUp extends Component {
     e.preventDefault();
     console.log(this.state);
     // this.getWPnonce();
-    axios.post('http://localhost:8080/wp/v2/users', {
+    axios.post('http://localhost:8080/wp-json/wp/v2/users', {
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       roles: this.state.roles,
     }, {
+      auth: {
+        username: 'admin',
+        password: 'admin@123'
+      },
       headers: {
         'Authorization': `Bearer ${this.token}`,
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Origin": "http://localhost:8080",
-        "Access-Control-Allow-Methods": "POST",
+        'Accept': 'application/json',
+        
+        'Content-Type': 'application/json',
       }
     })
       .then(res => {
@@ -73,6 +77,7 @@ class SignUp extends Component {
 
   render() {
     return (
+      <div className='container'>
       <div className="SignUp">
         <form onSubmit={this.handleSubmit}>
 
@@ -91,7 +96,7 @@ class SignUp extends Component {
             <input name="password" value={this.state.password} onChange={this.handleChange} type="password" className="form-control" id="exampleInputPassword" placeholder="Enter Password" />
           </div>
 
-          <div className='formGroup'>
+          <div className='form-group'>
             <label htmlFor="exampleInputRoles">Select Roles</label>
             <select className="form-control" onChange={(e) => { this.setState({ roles: e.target.value }) }} placeholder="Select Role" id="exampleInputRoles">
               <option>Select Roles</option>
@@ -122,6 +127,7 @@ class SignUp extends Component {
           <button type="submit" className="btn btn-primary">Submit</button>
 
         </form>
+        </div>
       </div>
     );
   }

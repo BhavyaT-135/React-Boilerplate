@@ -47,12 +47,18 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         // this.getWPnonce();
-        axios.get('/wp-json/wp/v2/users', {
+        axios.get('http://localhost:8080/wp-json/wp/v2/users', {
+            auth: {
+                username: 'admin',
+                password: 'admin@123'
+            },
             headers: {
                 'Authorization': `Bearer ${this.token}`,
-                "Access-Control-Allow-Headers": "*",
-                "Access-Control-Allow-Origin": "http://localhost:8080",
-                "Access-Control-Allow-Methods": "*"
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                // "Access-Control-Allow-Headers": "*",
+                // "Access-Control-Allow-Origin": "http://localhost:8080",
+                // "Access-Control-Allow-Methods": "*"
             }
         })
             .then(res => {
@@ -64,6 +70,7 @@ class Login extends Component {
 
     render() {
         return (
+            <div className="container">
             <div className="Login">
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -76,6 +83,7 @@ class Login extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                </div>
             </div>
         );
     }
