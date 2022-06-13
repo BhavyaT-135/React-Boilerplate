@@ -57,15 +57,16 @@ class SignUp extends Component {
       password: this.state.password,
       roles: this.state.roles,
     }, {
-      auth: {
-        username: 'admin',
-        password: 'admin@123'
-      },
+      // auth: {
+      //   username: 'admin',
+      //   password: 'admin@123'
+      // },
       headers: {
         'Authorization': `Bearer ${this.token}`,
         'Accept': 'application/json',
-        
-        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Access-Control-Request-Header': 'Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type',
       }
     })
       .then(res => {
