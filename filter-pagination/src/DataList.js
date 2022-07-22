@@ -4,13 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+
 
 const DataList = () => {
   const [userList, setUserList] = useState([]);
   
   const columns = [
     { dataField: 'id', text: 'Id' },
-    { dataField: 'name', text: 'Name', sort: true },
+    { dataField: 'name', text: 'Name', sort: true, filter : textFilter() },
     { dataField: 'username', text: 'Username', sort: true },
     { dataField: 'email', text: 'Email', sort: true },
   ];
@@ -23,6 +26,7 @@ const DataList = () => {
     nextPageText: '>',
     prePageText: '<',
     showTotal: true,
+    alwaysShowAllBtns: true,
     onPageChange: function (page, sizePerPage) {
       console.log('page', page);
       console.log('sizePerPage', sizePerPage);
@@ -47,7 +51,14 @@ const DataList = () => {
     
   return (
       <div>
-        <BootstrapTable bootstrap4 keyField='id' data={userList} columns={columns} /> 
+      <BootstrapTable
+        bootstrap4
+        keyField='id'
+        data={userList}
+        columns={columns}
+        pagination={pagination}
+        filter={filterFactory()}
+      /> 
       </div>
       )
 }
