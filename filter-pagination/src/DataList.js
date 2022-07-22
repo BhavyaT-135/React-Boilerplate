@@ -6,16 +6,30 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import ToolKitProvider, { CSVExport } from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 
 
 const DataList = () => {
   const [userList, setUserList] = useState([]);
   
+  const { ExportCSVButton } = CSVExport;
+
+  const MyExportCSV = (props) => {
+    const handleClick = () => {
+      props.onExport();
+    };
+    return (
+      <div>
+        <button className="btn btn-success" onClick={handleClick}>Export to CSV</button>
+      </div>
+    );
+  };
+
   const columns = [
     { dataField: 'id', text: 'Id' },
     { dataField: 'name', text: 'Name', sort: true, filter : textFilter() },
-    { dataField: 'username', text: 'Username', sort: true },
-    { dataField: 'email', text: 'Email', sort: true },
+    { dataField: 'username', text: 'Username', sort: true, filter: textFilter() },
+    { dataField: 'email', text: 'Email', sort: true, filter: textFilter() },
   ];
 
   const pagination = paginationFactory({
@@ -51,14 +65,30 @@ const DataList = () => {
     
   return (
       <div>
-      <BootstrapTable
-        bootstrap4
-        keyField='id'
-        data={userList}
-        columns={columns}
-        pagination={pagination}
-        filter={filterFactory()}
-      /> 
+        <ToolKitProvider
+          bootstrap4
+          keyField="id"
+          data={userList}
+          columns={columns}
+          exportCSV
+        >
+          {
+            props => (
+              <React.Fragment>
+                <MyExportCSV {...props.csvProps} />
+                <BootstrapTable
+                  // bootstrap4
+                  // keyField='id'
+                  // data={userList}
+                  // columns={columns}
+                  pagination={pagination}
+                  filter={filterFactory()}
+                  {...props.baseProps}
+                />
+              </React.Fragment>
+            )
+          }
+        </ToolKitProvider>    
       </div>
       )
 }
