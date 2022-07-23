@@ -1,0 +1,20 @@
+**React Testing Crash Course**
+Youtube Link:- https://www.youtube.com/watch?v=OVNjsIto9xM&list=WL&index=11
+
+Why you should test?
+* Goal - Check whether an application behaves as expected
+* Safeguard against unwanted behaviour when changes are made to the code
+* Automated, and thus efficient on the long-term
+
+What should you test?
+* Have a test priority (example):
+
+1. High value features
+2. Edge cases in high value features
+3. Things that are easy to break
+4. Basic React component Testing
+    * User interactions
+    * Conditional rendering
+    * Utils/Hooks
+
+    
